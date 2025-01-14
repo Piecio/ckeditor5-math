@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    {
+      "name": "Math",
+      "className": "Math",
+      "description": "Adds text to the editor.",
+      "path": "src/math.ts",
+      "uiComponents": [
+        {
+          "name": "math",
+          "type": "Button",
+          "iconPath": "theme/icons/ckeditor.svg"
+        }
+      ]
+    }
+  ]
+}
