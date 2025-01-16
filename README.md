@@ -1,141 +1,288 @@
-@piecio/ckeditor5-math
-======================
+# CKEditor 5 mathematical feature &middot; [![GitHub license](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/isaul32/ckeditor5-math/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@isaul32/ckeditor5-math.svg?style=flat)](https://www.npmjs.com/package/@isaul32/ckeditor5-math)
 
-This package was created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package.
+ckeditor5-math is a TeX-based mathematical plugin for CKEditor 5. You can use it to insert, edit, and view mathematical equations and formulas. This plugin supports [MathJax], [KaTeX] and custom typesetting engines.
+
+[mathjax]: https://www.mathjax.org/
+[katex]: https://katex.org/
 
 ## Table of contents
 
-* [Developing the package](#developing-the-package)
-* [Available scripts](#available-scripts)
-  * [`start`](#start)
-  * [`test`](#test)
-  * [`lint`](#lint)
-  * [`stylelint`](#stylelint)
-  * [`build:dist`](#builddist)
-  * [`translations:synchronize`](#translationssynchronize)
-  * [`translations:validate`](#translationsvalidate)
-  * [`ts:build` and `ts:clear`](#tsbuild-and-tsclear)
-* [License](#license)
+-   [Features](#features)
+-   [Demos](#demos)
+-   [Screenshots](#screenshots)
+-   [Requirements](#requirements)
+-   [Examples](#examples)
+-   [Installation](#installation)
+    -   [Styles for Lark theme](#styles-for-lark-theme)
+-   [Configuration & Usage](#configuration--usage)
+    -   [Plugin options](#plugin-options)
+    -   [Available typesetting engines](#available-typesetting-engines)
+    -   [Supported input and output formats](#supported-input-and-output-formats)
+-   [Paste support](#paste-support)
+    -   [From plain text](#from-plain-text)
+-   [Autoformat support](#autoformat-support)
+-   [Preview workaround](#preview-workaround)
 
-## Developing the package
+## Features
 
-To read about the CKEditor 5 Framework, visit the [CKEditor 5 Framework documentation](https://ckeditor.com/docs/ckeditor5/latest/framework/index.html).
+-   Written in TypeScript (as of v41.2.1)
+-   DLL build support (as of v36.0.3)
+-   TeX syntax
+-   Inline and display equations
+-   Preview view
+-   Multiple typesetting engines
+-   Have multiple input and output format
+-   Paste support
+    -   from plain text
+-   Autoformat support
 
-## Available scripts
+# Demos
 
-NPM scripts are a convenient way to provide commands in a project. They are defined in the `package.json` file and shared with people contributing to the project. It ensures developers use the same command with the same options (flags).
+-   [Classic editor with MathJax](https://jsfiddle.net/isaul32/qktj9h7x/)
+-   [Classic editor with KaTex](https://jsfiddle.net/isaul32/3wjrkLdv/)
+-   [Balloon block editor with KaTex](https://jsfiddle.net/isaul32/q01mu8kp/)
 
-All the scripts can be executed by running `npm run <script>`. Pre and post commands with matching names will be run for those as well.
+## Screenshots
 
-The following scripts are available in the package.
+![Screenshot 1](/screenshots/1.png?raw=true "Screenshot 1")
 
-### `start`
+![Screenshot 2](/screenshots/2.png?raw=true "Screenshot 2")
 
-Starts an HTTP server with the live-reload mechanism that allows previewing and testing of plugins available in the package.
+## Requirements
 
-When the server starts, the default browser will open the developer sample. This can be disabled by passing the `--no-open` option to that command.
+-   Use same major version as your CKEditor 5 build
 
-You can also define the language that will translate the created editor by specifying the `--language [LANG]` option. It defaults to `'en'`.
+If you get duplicated modules error, you have mismatching versions.
 
-Examples:
+## Examples
 
-```bash
-# Starts the server and open the browser.
-npm run start
+[Link to examples repository](https://github.com/isaul32/ckeditor5-math-examples)
 
-# Disable auto-opening the browser.
-npm run start -- --no-open
+## Installation
 
-# Create the editor with the interface in German.
-npm run start -- --language=de
+Use official classic or inline build as a base:
+
+-   [CKEditor 5 classic editor build](https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-build-classic)
+-   [CKEditor 5 inline editor build](https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-build-inline)
+
+Install plugin with NPM or Yarn
+
+`npm install @isaul32/ckeditor5-math --save-dev`
+
+`yarn add @isaul32/ckeditor5-math --dev`
+
+Add import into ckeditor.js file
+
+```js
+import Math from '@isaul32/ckeditor5-math/src/math';
+import AutoformatMath from '@isaul32/ckeditor5-math/src/autoformatmath';
 ```
 
-### `test`
+Add it to built-in plugins
 
-Allows executing unit tests for the package specified in the `tests/` directory. To check the code coverage, add the `--coverage` modifier. See other [CLI flags](https://vitest.dev/guide/cli.html) in Vitest.
-
-Examples:
-
-```bash
-# Execute tests.
-npm run test
-
-# Generate code coverage report after each change in the sources.
-npm run test -- --coverage
+```js
+InlineEditor.builtinPlugins = [
+	// ...
+	Math,
+	AutoformatMath
+];
 ```
 
-### `lint`
+**Add math button to toolbar**
 
-Runs ESLint, which analyzes the code (all `*.ts` files) to quickly find problems.
-
-Examples:
-
-```bash
-# Execute eslint.
-npm run lint
+```js
+InlineEditor.defaultConfig = {
+	toolbar: {
+		items: [
+			// ...
+			'math'
+		]
+	}
+};
 ```
 
-### `stylelint`
+### Styles for Lark theme
 
-Similar to the `lint` task, stylelint analyzes the CSS code (`*.css` files in the `theme/` directory) in the package.
+**Copy theme/ckeditor5-math folder** from [https://github.com/isaul32/ckeditor5/tree/master/packages/ckeditor5-theme-lark](https://github.com/isaul32/ckeditor5/tree/master/packages/ckeditor5-theme-lark) to your lark theme repository
 
-Examples:
+### Using DLL builds
 
-```bash
-# Execute stylelint.
-npm run stylelint
+Use the [official DLL build](https://ckeditor.com/docs/ckeditor5/latest/installation/advanced/alternative-setups/dll-builds.html) and additionally load the math plugin:
+
+```html
+<script src="path/to/node_modules/@isaul32/ckeditor5-math/build/math.js"></script>
+<script>
+CKEditor5.editorClassic.ClassicEditor
+	.create(editorElement, {
+		plugins: [
+			CKEditor5.math.Math,
+			...
+		],
+		...
+	});
+</script>
 ```
 
-### `build:dist`
+## Configuration & Usage
 
-Creates npm and browser builds of your plugin. These builds can be added to the editor by following the [Configuring CKEditor 5 features](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/configuration.html) guide.
+### Plugin options
 
-Examples:
-
-```bash
-# Builds the `npm` and browser files thats are ready to publish.
-npm run build:dist
+```js
+InlineEditor.defaultConfig = {
+	// ...
+	math: {
+		engine: 'mathjax', // or katex or function. E.g. (equation, element, display) => { ... }
+		lazyLoad: undefined, // async () => { ... }, called once before rendering first equation if engine doesn't exist. After resolving promise, plugin renders equations.
+		outputType: 'script', // or span
+		className: 'math-tex', // class name to use with span output type, change e.g. MathJax processClass (v2) / processHtmlClass (v3) is set
+		forceOutputType: false, // forces output to use outputType
+		enablePreview: true, // Enable preview view
+		previewClassName: [], // Class names to add to previews
+		popupClassName: [], // Class names to add to math popup balloon
+		katexRenderOptions: {}  // KaTeX only options for katex.render(ToString)
+	}
+}
 ```
 
-### `translations:synchronize`
+### Available typesetting engines
 
-Synchronizes translation messages (arguments of the `t()` function) by performing the following steps:
+**MathJax**
 
- * Collect all translation messages from the package by finding `t()` calls in source files.
- * Detect if translation context is valid, i.e. whether the provided values do not interfere with the values specified in the `@ckeditor/ckeditor5-core` package.
- * If there are no validation errors, update all translation files (`*.po` files) to be in sync with the context file:
-   * unused translation entries are removed,
-   * missing translation entries are added with empty string as the message translation,
-   * missing translation files are created for languages that do not have own `*.po` file yet.
+-   Tested with **latest 2.7**
+-   Has experimental (**CHTML**, **SVG**) support for **3.0.0** or newer version
 
-The task may end with an error if one of the following conditions is met:
+[<img src="https://www.mathjax.org/badge/badge-square.svg" width="130" alt="KaTeX">](https://www.mathjax.org/)
 
-* Found the `Unused context` error &ndash; entries specified in the `lang/contexts.json` file are not used in source files. They should be removed.
-* Found the `Duplicated contex` error &ndash; some of the entries are duplicated. Consider removing them from the `lang/contexts.json` file, or rewriting them.
-* Found the `Missing context` error &ndash; entries specified in source files are not described in the `lang/contexts.json` file. They should be added.
+**KaTeX**
 
-Examples:
+-   Tested with version **0.12.0**
 
-```bash
-npm run translations:synchronize
+[<img src="https://katex.org/img/katex-logo-black.svg" width="130" alt="KaTeX">](https://katex.org/)
+
+-   `katexRenderOptions` - pass [options](https://katex.org/docs/options.html).
+
+    ```js
+    InlineEditor.defaultConfig = {
+    	// ...
+    	math: {
+    		engine: 'katex'
+    		katexRenderOptions: {
+    			macros: {
+    				"\\neq": "\\mathrel{\\char`≠}",
+    			},
+    		},
+    	}
+    }
+    ```
+
+**Custom typesetting**
+
+Custom typesetting is possible to implement with engine config. For example, custom typesetting feature can be used when use back end rendering.
+
+```js
+InlineEditor.defaultConfig = {
+	// ...
+	math: {
+		engine: ( equation, element, display, preview ) => {
+			// ...
+		}
+	}
+}
 ```
 
-### `translations:validate`
+-   **equation** is equation in TeX format without delimiters.
+-   **element** is DOM element reserved for rendering.
+-   **display** is boolean. Typesetting should be inline when false.
+-   **preview** is boolean. Rendering in preview when true.
 
-Peforms only validation steps as described in [`translations:synchronize`](#translationssynchronize) script, but without modifying any files. It only checks the correctness of the context file against the `t()` function calls.
+### Supported input and output formats
 
-Examples:
+Supported input and output formats are:
 
-```bash
-npm run translations:validate
+```html
+<!-- MathJax style http://docs.mathjax.org/en/v2.7-latest/advanced/model.html#how-mathematics-is-stored-in-the-page -->
+<script type="math/tex">\sqrt{\frac{a}{b}}</script>
+<script type="math/tex; mode=display">\sqrt{\frac{a}{b}}</script>
+
+<!-- CKEditor 4 style https://ckeditor.com/docs/ckeditor4/latest/features/mathjax.html -->
+<span class="math-tex">\( \sqrt{\frac{a}{b}} \)</span>
+<span class="math-tex">\[ \sqrt{\frac{a}{b}} \]</span>
 ```
 
-### `ts:build` and `ts:clear`
+### Paste support
 
-These scripts compile TypeScript and remove the compiled files. They are used in the aforementioned life cycle scripts, and there is no need to call them manually.
+#### From plain text
 
-## License
+Paste TeX equations with **delimiters**. For example:
 
-The `@piecio/ckeditor5-math` package is available under [MIT license](https://opensource.org/licenses/MIT).
+```latex
+\[ x=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \]
+```
 
-However, it is the default license of packages created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package and can be changed.
+or
+
+```latex
+\( x=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \)
+```
+
+### Autoformat support
+
+#### Inline mode
+
+Ctrl+M can be used to add easily math formulas in inline mode.
+
+#### Display mode
+
+Autoformat for math can be used to add formula in display mode on a new line by adding `\[` or `$$`. This feature requires additional autoformat plugin to be added.
+
+Add following lines into your build
+
+```js
+// ...
+import AutoformatMath from '@isaul32/ckeditor5-math/src/autoformatmath';
+
+InlineEditor.builtinPlugins = [
+	// ...
+	AutoformatMath
+];
+```
+
+or use it with DLL build
+
+```html
+<script src="path/to/node_modules/@isaul32/ckeditor5-math/build/math.js"></script>
+<script>
+CKEditor5.editorInline.InlineEditorEditor
+	.create(editorElement, {
+		plugins: [
+			CKEditor5.math.AutoformatMath,
+			...
+		],
+		...
+	});
+</script>
+```
+
+## Preview workaround
+
+`.ck-reset_all *` css rules from ckeditor5-ui and ckeditor5-theme-lark break rendering in preview mode.
+
+My solution for this is use rendering element outside of CKEditor DOM and place it to right place by using absolute position. Alternative solution could be using iframe, but then typesetting engine's scripts and styles have to copy to child document.
+
+## Development
+
+Contributions, improvements and bug fixes are welcome. To aid in this, try out
+our developer environment w/ live reload support and [CKEditor 5 inspector].
+
+![Development environment](/screenshots/development-environment.png?raw=true "Screenshot of
+development environment")
+
+To enter a development loop with hot reload support:
+
+-   `git clone https://github.com/isaul32/ckeditor5-math.git`
+-   `cd ckeditor5-math`
+-   `yarn`
+-   `yarn start`
+-   http://localhost:8080
+
+[ckeditor 5 inspector]: https://ckeditor.com/docs/ckeditor5/latest/framework/guides/development-tools.html#ckeditor-5-inspector
