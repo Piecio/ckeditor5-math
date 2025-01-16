@@ -1,14 +1,15 @@
 {
   "name": "@piecio/ckeditor5-math",
-  "version": "0.0.1",
-  "description": "A plugin for CKEditor 5.",
+  "version": "44.1.0",
+  "description": "Math plugin for CKEditor 5 (fork with custom modifications).",
   "keywords": [
     "ckeditor",
     "ckeditor5",
     "ckeditor 5",
     "ckeditor5-feature",
     "ckeditor5-plugin",
-    "ckeditor5-package-generator"
+    "ckeditor5-package-generator",
+    "katex"
   ],
   "type": "module",
   "main": "dist/index.ts",
@@ -23,7 +24,7 @@
     "./browser/*": null,
     "./package.json": "./package.json"
   },
-  "license": "MIT",
+  "license": "ISC",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=5.7.1"
@@ -32,30 +33,30 @@
     "dist",
     "ckeditor5-metadata.json"
   ],
+  "dependencies": {
+    "ckeditor5": "44.1.0"
+  },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-build-tools": "43.0.1",
     "@ckeditor/ckeditor5-inspector": ">=4.1.0",
     "@ckeditor/ckeditor5-package-tools": "^3.0.1",
     "@typescript-eslint/eslint-plugin": "~5.43.0",
     "@typescript-eslint/parser": "^5.18.0",
-    "@vitest/coverage-istanbul": "^2.0.5",
     "@vitest/browser": "^2.0.5",
-    "ckeditor5": "latest",
+    "@vitest/coverage-istanbul": "^2.0.5",
     "eslint": "^7.32.0",
     "eslint-config-ckeditor5": ">=9.0.0",
+    "file-loader": "^6.2.0",
     "http-server": "^14.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
-    "stylelint": "^13.13.1",
+    "stylelint": "^16.13.2",
     "stylelint-config-ckeditor5": ">=9.0.0",
     "ts-node": "^10.9.1",
     "typescript": "5.0.4",
     "vite-plugin-svgo": "~1.4.0",
     "vitest": "^2.0.5",
     "webdriverio": "^9.0.7"
-  },
-  "peerDependencies": {
-    "ckeditor5": ">=42.0.0 || ^0.0.0-nightly"
   },
   "scripts": {
     "build:dist": "node ./scripts/build-dist.mjs",
@@ -84,5 +85,23 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isaul32/ckeditor5-math.git"
+  },
+  "bugs": "https://github.com/isaul32/ckeditor5-math/issues",
+  "author": "Sauli Anto",
+  "contributors": [
+    {
+      "name": "Piecio",
+      "url": "https://github.com/Piecio"
+    }
+  ],
+  "eslintIgnore": [
+    "node_modules/**",
+    "packages/*/node_modules/**",
+    "packages/*/build/**",
+    "packages/*/src/lib/**"
+  ]
 }

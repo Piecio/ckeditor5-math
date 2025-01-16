@@ -1,3 +1,6 @@
 {
-  "Math": "Content for a tooltip is displayed when a user hovers the CKEditor 5 icon."
-}
+    "Insert equation": "Button to insert an equation.",
+    "Equation preview": "Equation preview.",
+    "Insert equation in TeX format.": "Label for the field to insert an equation in TeX format.",
+    "Display mode": "Label for the switch to change the equation display mode."
+  }

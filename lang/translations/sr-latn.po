@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Language: sr@latin\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "Button to insert an equation."
+msgid "Insert equation"
+msgstr ""
+
+msgctxt "Equation preview."
+msgid "Equation preview"
+msgstr ""
+
+msgctxt "Label for the field to insert an equation in TeX format."
+msgid "Insert equation in TeX format."
+msgstr ""
+
+msgctxt "Label for the switch to change the equation display mode."
+msgid "Display mode"
+msgstr ""

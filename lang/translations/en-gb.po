@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "Button to insert an equation."
+msgid "Insert equation"
+msgstr "Insert equation"
+
+msgctxt "Equation preview."
+msgid "Equation preview"
+msgstr "Equation preview"
+
+msgctxt "Label for the field to insert an equation in TeX format."
+msgid "Insert equation in TeX format."
+msgstr "Insert equation in TeX format."
+
+msgctxt "Label for the switch to change the equation display mode."
+msgid "Display mode"
+msgstr "Display mode"

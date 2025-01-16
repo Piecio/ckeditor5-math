@@ -1,0 +1,52 @@
+.ck.ck-math-form {
+    padding: var(--ck-spacing-large);
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dwie kolumny o równych szerokościach */
+    grid-template-rows: auto 1fr auto; /* Trzy wiersze: jeden dla inputa, drugi dla podglądu, trzeci dla przycisków */
+    grid-column-gap: 0px;
+    grid-row-gap: var(--ck-spacing-standard); /* Odstęp między wierszami */
+}
+
+.ck-math-form .ck-input {
+    width: 100% !important;
+}
+
+.ck.ck-math-form .ck-math-view {
+    grid-column: 1 / 3; /* Zajmuje dwie kolumny (od 1 do 3) */
+}
+
+.ck.ck-math-form .ck-button:nth-of-type(1) {
+    grid-area: 3 / 1 / 4 / 2; /* Pierwszy przycisk w 3. wierszu, 1. kolumna */
+}
+
+.ck.ck-math-form .ck-button:nth-of-type(2) {
+    grid-area: 3 / 2 / 4 / 3; /* Drugi przycisk w 3. wierszu, 2. kolumna */
+}
+
+/* Styl dla przycisku Save */
+.ck-math-form .ck-button-save {
+    background-color: var(--ck-color-primary);
+    color: white;
+}
+
+/* Styl dla przycisku Cancel */
+.ck-math-form .ck-button-cancel {
+    background-color: var(--ck-color-light);
+    color: var(--ck-color-primary);
+}
+
+.ck-math-form .ck-button-display-toggle {
+    padding-left: 0 !important;
+}
+
+.ck-math-form .ck-math-preview {
+    min-width: 100%; /* Zapewnia, że element nie wyjdzie poza dostępny obszar */
+	padding: 28px;
+    overflow: auto; /* Dodaje pasek przewijania, jeśli tekst jest za długi */
+    grid-column: 1 / 3; /* Zajmuje dwie kolumny (od 1 do 3) */
+    white-space: pre-wrap; /* Zapewnia, że łamanie linii działa poprawnie w matematycznych wyrażeniach */
+    /* Dodanie obramowania */
+    border: 1px solid #ccc !important; /* Kolor szary i grubość 1px */
+    border-radius: 4px !important; /* Zaokrąglenie rogów dla bardziej estetycznego wyglądu */
+    background-color: #f9f9f9 !important; /* Kolor tła */
+}

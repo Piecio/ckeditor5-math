@@ -1,8 +1,7 @@
-import ckeditor from './../theme/icons/ckeditor.svg';
-import './augmentation.js';
+/**
+ * @module math
+ */
 
 export { default as Math } from './math.js';
+export { default as AutoformatMath } from './autoformatmath.js';
 
-export const icons = {
-	ckeditor
-};
