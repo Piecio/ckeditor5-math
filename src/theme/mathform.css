@@ -41,6 +41,7 @@
 
 .ck-math-form .ck-math-preview {
     min-width: 100%; /* Zapewnia, że element nie wyjdzie poza dostępny obszar */
+	min-height: 58px;
 	padding: 28px;
     overflow: auto; /* Dodaje pasek przewijania, jeśli tekst jest za długi */
     grid-column: 1 / 3; /* Zajmuje dwie kolumny (od 1 do 3) */
