@@ -320,26 +320,25 @@ function getPreviewElement(
 	return previewEl;
 }
 
-function moveAndScaleElement(parent: HTMLElement, child: HTMLElement) {
-    moveElement(parent, child);
-    const domRect = child.getBoundingClientRect();
-    parent.style.width = domRect.width + 'px';
-    parent.style.height = domRect.height + 'px';
-	console.log("moveAndScale: ", domRect)
+function moveAndScaleElement( parent: HTMLElement, child: HTMLElement ) {
+	moveElement( parent, child );
+	const domRect = child.getBoundingClientRect();
+	parent.style.width = domRect.width + 'px';
+	parent.style.height = domRect.height + 'px';
+	console.log( 'moveAndScale: ', domRect );
 }
 
-function moveElement(parent: HTMLElement, child: HTMLElement) {
-    const domRect = parent.getBoundingClientRect();
-    const left = global.window.scrollX + domRect.left;
-    const top = global.window.scrollY + domRect.top;
+function moveElement( parent: HTMLElement, child: HTMLElement ) {
+	const domRect = parent.getBoundingClientRect();
+	const left = global.window.scrollX + domRect.left;
+	const top = global.window.scrollY + domRect.top;
 
-    child.style.position = 'absolute';
-    child.style.overflow = '';
-    child.style.maxHeight = '500px';
-    child.style.left = left + 'px';
-    child.style.top = top + 'px';
-    child.style.padding = '16px';
-    child.style.zIndex = 'var(--ck-z-panel)';
-    child.style.pointerEvents = 'none';
- 
+	child.style.position = 'absolute';
+	child.style.overflow = '';
+	child.style.maxHeight = '500px';
+	child.style.left = left + 'px';
+	child.style.top = top + 'px';
+	child.style.padding = '16px';
+	child.style.zIndex = 'var(--ck-z-panel)';
+	child.style.pointerEvents = 'none';
 }

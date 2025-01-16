@@ -24,7 +24,6 @@ export default class MathUI extends Plugin {
 	public static get pluginName() {
 		return 'MathUI' as const;
 	}
-	
 
 	private _previewUid = `math-preview-${ uid() }`;
 	private _balloon: ContextualBalloon = this.editor.plugins.get( ContextualBalloon );
@@ -231,7 +230,7 @@ export default class MathUI extends Plugin {
 			const button = new ButtonView();
 
 			button.isEnabled = true;
-			button.label = t("Insert equation");
+			button.label = t( 'Insert equation' );
 			button.icon = mathIcon;
 			button.keystroke = mathKeystroke;
 			button.tooltip = true;

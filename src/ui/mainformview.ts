@@ -9,11 +9,11 @@ import {
 	SwitchButtonView,
 	View,
 	ViewCollection,
-	Locale,
 	FocusTracker,
 	KeystrokeHandler
 } from 'ckeditor5';
-import type {	InputTextView,	FocusableView } from 'ckeditor5';
+import type {	InputTextView,	FocusableView,
+	Locale } from 'ckeditor5';
 import { extractDelimiters, hasDelimiters } from '../utils.js';
 import MathView from './mathview.js';
 import './../theme/mathform.css';
@@ -74,7 +74,6 @@ export default class MainFormView extends View {
 
 		// Cancel button
 		this.cancelButtonView = this._createButton( t( 'Cancel' ), cancelIcon, 'ck-button-cancel', 'cancel' );
-		
 
 		this.previewEnabled = previewEnabled;
 
@@ -257,33 +256,31 @@ export default class MainFormView extends View {
 	}
 
 	private _createDisplayButton() {
-	
 		const t = this.locale.t;
-	
-		const switchButton = new SwitchButtonView(this.locale);
-	
-		switchButton.set({
-			label: t('Display mode'),
+
+		const switchButton = new SwitchButtonView( this.locale );
+
+		switchButton.set( {
+			label: t( 'Display mode' ),
 			withText: true
-		});
-	
-		switchButton.extendTemplate({
+		} );
+
+		switchButton.extendTemplate( {
 			attributes: {
 				class: 'ck-button-display-toggle'
 			}
-		});
-	
-		switchButton.on('execute', () => {
+		} );
+
+		switchButton.on( 'execute', () => {
 			// Toggle state
 			switchButton.isOn = !switchButton.isOn;
-	
-			if (this.previewEnabled && this.mathView) {
+
+			if ( this.previewEnabled && this.mathView ) {
 				// Update preview view
 				this.mathView.display = switchButton.isOn;
 			}
-		});
-	
+		} );
+
 		return switchButton;
 	}
-	
 }

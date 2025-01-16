@@ -38,14 +38,13 @@ import 'ckeditor5/ckeditor5.css';
 import coreTranslations from 'ckeditor5/translations/pl.js';
 import translations from '../dist/translations/pl.js';
 
-
 ClassicEditor
 	.create( document.getElementById( 'editor' )!, {
 		licenseKey: 'GPL',
 		translations: [
-            coreTranslations,
+			coreTranslations,
 			translations
-        ],
+		],
 		language: 'pl',
 		plugins: [
 			Math,
@@ -72,7 +71,7 @@ ClassicEditor
 			Base64UploadAdapter
 		],
 		math: {
-			engine: 'katex', // or katex or function. E.g. (equation, element, display) => { ... }
+			engine: 'katex' // or katex or function. E.g. (equation, element, display) => { ... }
 		},
 		toolbar: [
 			'undo',
