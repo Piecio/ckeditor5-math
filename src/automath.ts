@@ -2,7 +2,7 @@ import { Clipboard, Plugin, type Editor, LivePosition, LiveRange, Undo, global }
 
 import { extractDelimiters, hasDelimiters, delimitersCounts } from './utils.js';
 
-export default class AutoMath extends Plugin {
+export class AutoMath extends Plugin {
 	public static get requires() {
 		return [ Clipboard, Undo ] as const;
 	}

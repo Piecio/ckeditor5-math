@@ -33,9 +33,6 @@
     "dist",
     "ckeditor5-metadata.json"
   ],
-  "dependencies": {
-    "ckeditor5": "44.1.0"
-  },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-build-tools": "43.0.1",
     "@ckeditor/ckeditor5-inspector": ">=4.1.0",
@@ -57,6 +54,9 @@
     "vite-plugin-svgo": "~1.4.0",
     "vitest": "^2.0.5",
     "webdriverio": "^9.0.7"
+  },
+  "peerDependencies": {
+    "ckeditor5": ">=42.0.0 || ^0.0.0-nightly"
   },
   "scripts": {
     "build:dist": "node ./scripts/build-dist.mjs",

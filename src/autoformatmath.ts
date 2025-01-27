@@ -1,11 +1,11 @@
 import { Plugin, global, logWarning } from 'ckeditor5';
 // eslint-disable-next-line ckeditor5-rules/allow-imports-only-from-main-package-entry-point
-import blockAutoformatEditing from '@ckeditor/ckeditor5-autoformat/src/blockautoformatediting.js';
-import Math from './math.js';
-import MathCommand from './mathcommand.js';
-import MathUI from './mathui.js';
+import {blockAutoformatEditing} from '@ckeditor/ckeditor5-autoformat';
+import { Math } from './math.js';
+import { MathCommand } from './mathcommand.js';
+import { MathUI } from './mathui.js';
 
-export default class AutoformatMath extends Plugin {
+export class AutoformatMath extends Plugin {
 	public static get requires() {
 		return [ Math, 'Autoformat' ] as const;
 	}

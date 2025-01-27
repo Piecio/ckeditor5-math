@@ -4,8 +4,8 @@ import type { KatexOptions } from '../typings/index.js';
 import { renderEquation } from '../utils.js';
 
 export default class MathView extends View {
-	public value: string;
-	public display: boolean;
+	public declare value: string;
+	public declare display: boolean;
 	public previewUid: string;
 	public previewClassName: Array<string>;
 	public katexRenderOptions: KatexOptions;
@@ -39,11 +39,12 @@ export default class MathView extends View {
 		this.previewClassName = previewClassName;
 
 		this.set( 'value', '' );
-		this.value = '';
+
 		this.set( 'display', false );
-		this.display = false;
+
 
 		this.on( 'change', () => {
+			console.log("changed")
 			if ( this.isRendered ) {
 				this.updateMath();
 			}

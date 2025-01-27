@@ -31,12 +31,12 @@ import {
 
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 
-import Math from '../src/math.js';
+import { Math } from '../src/math.js';
 
 import 'ckeditor5/ckeditor5.css';
 
 import coreTranslations from 'ckeditor5/translations/pl.js';
-import translations from '../dist/translations/pl.js';
+import mathTranslations from '../dist/translations/pl.js';
 
 
 ClassicEditor
@@ -44,7 +44,7 @@ ClassicEditor
 		licenseKey: 'GPL',
 		translations: [
             coreTranslations,
-			translations
+			mathTranslations
         ],
 		language: 'pl',
 		plugins: [

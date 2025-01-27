@@ -1,10 +1,11 @@
 import { Plugin, Widget } from 'ckeditor5';
 
-import MathUI from './mathui.js';
-import MathEditing from './mathediting.js';
-import AutoMath from './automath.js';
+import { MathUI } from './mathui.js';
+import { MathEditing } from './mathediting.js';
+import { AutoMath } from './automath.js';
+import './theme/mathform.css';
 
-export default class Math extends Plugin {
+export class Math extends Plugin {
 	public static get requires() {
 		return [ MathEditing, MathUI, AutoMath, Widget ] as const;
 	}

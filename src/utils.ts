@@ -133,6 +133,11 @@ export async function renderEquation(
 			previewClassName,
 			el => {
 				if ( katex ) {
+					console.log('Equation:', equation);
+					console.log("Target element for render:", el); // upewnij się, że `element` istnieje
+					console.log('Rendered Element:', el.innerHTML);
+					const mathPreview = document.querySelector('.ck-math-preview');
+					console.log('Math Preview Content:', mathPreview?.innerHTML);
 					katex.render( equation, el, {
 						throwOnError: false,
 						displayMode: display,
@@ -334,8 +339,7 @@ function moveElement(parent: HTMLElement, child: HTMLElement) {
     const top = global.window.scrollY + domRect.top;
 
     child.style.position = 'absolute';
-    child.style.overflow = '';
-    child.style.maxHeight = '500px';
+
     child.style.left = left + 'px';
     child.style.top = top + 'px';
     child.style.padding = '16px';

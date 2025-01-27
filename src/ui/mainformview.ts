@@ -16,7 +16,7 @@ import {
 import type {	InputTextView,	FocusableView } from 'ckeditor5';
 import { extractDelimiters, hasDelimiters } from '../utils.js';
 import MathView from './mathview.js';
-import './../theme/mathform.css';
+
 import type { KatexOptions } from '../typings/index.js';
 
 const { check: checkIcon, cancel: cancelIcon } = icons;
@@ -30,7 +30,7 @@ class MathInputView extends LabeledFieldView<InputTextView> {
 	}
 }
 
-export default class MainFormView extends View {
+export class MainFormView extends View {
 	public saveButtonView: ButtonView;
 	public mathInputView: MathInputView;
 	public displayButtonView: SwitchButtonView;

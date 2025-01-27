@@ -1,4 +1,4 @@
-import MathCommand from './mathcommand.js';
+import { MathCommand } from './mathcommand.js';
 import type { Editor, DowncastWriter, Element } from 'ckeditor5';
 import { Plugin, CKEditorError, uid } from 'ckeditor5';
 import {
@@ -8,7 +8,7 @@ import {
 } from 'ckeditor5';
 import { renderEquation, extractDelimiters } from './utils.js';
 
-export default class MathEditing extends Plugin {
+export class MathEditing extends Plugin {
 	public static get requires() {
 		return [ Widget ] as const;
 	}

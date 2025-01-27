@@ -1,7 +1,8 @@
-import MathEditing from './mathediting.js';
-import MainFormView from './ui/mainformview.js';
+import { MathEditing } from './mathediting.js';
+import { MainFormView } from './ui/mainformview.js';
 import mathIcon from './theme/icons/math.svg';
-import MathCommand from './mathcommand.js';
+import { MathCommand } from './mathcommand.js';
+
 import {
 	Plugin,
 	ClickObserver,
@@ -14,9 +15,10 @@ import {
 } from 'ckeditor5';
 import { getBalloonPositionData } from './utils.js';
 
+
 const mathKeystroke = 'Ctrl+M';
 
-export default class MathUI extends Plugin {
+export class MathUI extends Plugin {
 	public static get requires() {
 		return [ ContextualBalloon, MathEditing ] as const;
 	}
