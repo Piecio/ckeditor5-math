@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 1fr; /* Dwie kolumny o równych szerokościach */
     grid-template-rows: auto 1fr auto; /* Trzy wiersze: jeden dla inputa, drugi dla podglądu, trzeci dla przycisków */
     grid-column-gap: 0px;
-    grid-row-gap: var(--ck-spacing-standard); /* Odstęp między wierszami */
+    grid-row-gap: var(--ck-spacing-small); /* Odstęp między wierszami */
 }
 
 .ck-math-form .ck-input {
