@@ -11,6 +11,7 @@ import {
 	ViewCollection,
 	Locale,
 	FocusTracker,
+	ToolbarSeparatorView, 
 	KeystrokeHandler
 } from 'ckeditor5';
 import type { InputTextView, FocusableView } from 'ckeditor5';
@@ -34,6 +35,7 @@ export class MainFormView extends View {
 	public mathInputView: MathInputView;
 	public displayButtonView: SwitchButtonView;
 	public cancelButtonView: ButtonView;
+	public katexDocLinkView: View;
 	public previewEnabled: boolean;
 	public previewLabel?: LabelView;
 	public mathView?: MathView;
@@ -64,10 +66,25 @@ export class MainFormView extends View {
 		// Display button
 		this.displayButtonView = this._createDisplayButton();
 
+		// KaTeX docs button
+		this.katexDocLinkView = this._createKatexDocLinkView( locale );
+
 		// Cancel button
 		this.cancelButtonView = this._createButton(t('Cancel'), cancelIcon, 'ck-button-cancel', 'cancel');
 
 		this.previewEnabled = previewEnabled;
+
+		// Tworzymy osobny szablon dla przycisków
+		const buttonsTemplate = {
+			tag: 'div',
+			attributes: {
+				style: 'display: flex; justify-content: space-between; width: 100%;', // Stylowanie przycisków
+			},
+			children: [
+				this.displayButtonView,
+				this.katexDocLinkView,
+			],
+		};
 
 		let children = [];
 		if (this.previewEnabled) {
@@ -79,9 +96,9 @@ export class MainFormView extends View {
 			this.mathView = new MathView(engine, lazyLoad, locale, previewUid, previewClassName, katexRenderOptions);
 			this.mathView.bind('display').to(this.displayButtonView, 'isOn');
 
-			children = [this.mathInputView, this.displayButtonView, this.previewLabel, this.mathView];
+			children = [this.mathInputView, buttonsTemplate, this.previewLabel, this.mathView];
 		} else {
-			children = [this.mathInputView, this.displayButtonView];
+			children = [this.mathInputView, buttonsTemplate, this.katexDocLinkView];
 		}
 
 		// Add UI elements to template
@@ -171,7 +188,7 @@ export class MainFormView extends View {
 		const mathInput = new MathInputView( this.locale );
 		const fieldView = mathInput.fieldView;
 	
-		mathInput.label = t( 'Insert equation in TeX format.' );
+		mathInput.label = t( 'Insert equation in KaTeX format.' );
 	
 	
 		if (fieldView.element != null) {
@@ -246,6 +263,38 @@ export class MainFormView extends View {
 		}
 
 		return button;
+	}
+
+
+	private _createKatexDocLinkView( locale: Locale ): ButtonView {
+		const t = this.locale.t;
+		const katexDocLinkButton = new ButtonView( locale );
+	
+		katexDocLinkButton.set( {
+			label: t('Katex documentation'), // Klucz tłumaczenia dla tekstu przycisku
+			withText: true, // Przycisk typu tekstowego
+			tooltip: t('Open Katex documentation'), // Klucz tłumaczenia dla tooltipa
+			class: 'katex-doc-link' // Klasa CSS dla stylowania
+		} );
+	
+
+		// Obsługa kliknięcia przycisku
+		katexDocLinkButton.on('execute', () => {
+			// Sprawdzamy, czy 'window' jest dostępne
+			if (typeof window !== 'undefined') {
+				const link = document.createElement('a');
+				link.href = 'https://katex.org/docs/supported.html';
+				link.target = '_blank'; // Otwieramy w nowej karcie
+				link.rel = 'noopener noreferrer'; // Dodajemy atrybuty bezpieczeństwa
+
+				// Programowo klikamy link, aby otworzyć go w nowej karcie
+				link.click();
+			} else {
+				console.error('Nie można otworzyć linku, ponieważ window nie jest dostępne.');
+			}
+		});
+	
+		return katexDocLinkButton;
 	}
 
 	private _createDisplayButton() {

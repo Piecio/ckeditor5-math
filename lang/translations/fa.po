@@ -12,10 +12,18 @@ msgctxt "Equation preview."
 msgid "Equation preview"
 msgstr ""
 
-msgctxt "Label for the field to insert an equation in TeX format."
-msgid "Insert equation in TeX format."
-msgstr ""
-
 msgctxt "Label for the switch to change the equation display mode."
 msgid "Display mode"
+msgstr ""
+
+msgctxt "Label for the field to insert an equation in KaTeX format."
+msgid "Insert equation in KaTeX format."
+msgstr ""
+
+msgctxt "Label for the button that opens KaTeX documentation."
+msgid "Katex documentation"
+msgstr ""
+
+msgctxt "Tooltip text for the button that opens KaTeX documentation."
+msgid "Open Katex documentation"
 msgstr ""

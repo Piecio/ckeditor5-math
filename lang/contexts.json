@@ -1,6 +1,8 @@
 {
-    "Insert equation": "Button to insert an equation.",
-    "Equation preview": "Equation preview.",
-    "Insert equation in TeX format.": "Label for the field to insert an equation in TeX format.",
-    "Display mode": "Label for the switch to change the equation display mode."
-  }
+  "Insert equation": "Button to insert an equation.",
+  "Equation preview": "Equation preview.",
+  "Insert equation in KaTeX format.": "Label for the field to insert an equation in KaTeX format.",
+  "Display mode": "Label for the switch to change the equation display mode.",
+  "Katex documentation": "Label for the button that opens KaTeX documentation.",
+  "Open Katex documentation": "Tooltip text for the button that opens KaTeX documentation."
+}

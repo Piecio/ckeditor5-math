@@ -9,6 +9,7 @@
 
 .ck-math-form .ck-input {
     width: 100% !important;
+    margin-bottom: var(--ck-spacing-medium) !important;
 }
 
 .ck.ck-math-form .ck-math-view {
