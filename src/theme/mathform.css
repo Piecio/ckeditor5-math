@@ -48,4 +48,6 @@
     background-color: #f9f9f9 !important; /* Kolor tła */
 }
 
-.katex-display { margin: 0em 0; }
+.katex-display { 
+    margin: 0em 0;
+}

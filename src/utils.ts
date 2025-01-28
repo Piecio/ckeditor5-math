@@ -333,6 +333,8 @@ function moveElement(parent: HTMLElement, child: HTMLElement) {
     const left = global.window.scrollX + domRect.left;
     const top = global.window.scrollY + domRect.top;
     child.style.position = 'absolute';
+	child.style.width = '100%';
+	child.style.maxWidth = '500px';
     child.style.left = left + 'px';
     child.style.top = top + 'px';
     child.style.padding = '16px';
