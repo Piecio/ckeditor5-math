@@ -174,22 +174,15 @@ export class MainFormView extends View {
 	
 		mathInput.label = t( 'Insert equation in TeX format.' );
 	
-		// Jeśli istnieje wartość do ustawienia (np. edytowana wartość)
+	
 		if (fieldView.element != null) {
 			let equationInput = fieldView.element.value.trim();
 			const params = extractDelimiters( equationInput );
 	
 			// Remove delimiters from input field
-			console.log("- mathInput.value before", mathInput.value)
 			fieldView.element.value = params.equation;
 			mathInput.value = params.equation;
-			console.log("- fieldView.element", fieldView.element)
-			console.log("- equationInput", equationInput)
-			console.log("- fieldView.element.value", fieldView.element.value)
-			console.log("- mathInput.value after", mathInput.value)
-		} else {
-			console.log('fieldView.element is null')
-		}
+		} 
 	
 		const onInput = () => {
 			if ( fieldView.element != null ) {
