@@ -165,7 +165,6 @@ export class MainFormView extends View {
 	}
 
 	private _createMathInput() {
-		console.log("_createMathInput()")
 		const t = this.locale.t;
 	
 		// Create equation input using MathInputView, which has value and isReadOnly
@@ -187,6 +186,11 @@ export class MainFormView extends View {
 		const onInput = () => {
 			if ( fieldView.element != null ) {
 				let equationInput = fieldView.element.value.trim();
+				if(equationInput){
+					mathInput.isEmpty = false;
+				} else {
+					mathInput.isEmpty = true;
+				}
 	
 				// If input has delimiters
 				if ( hasDelimiters( equationInput ) ) {
