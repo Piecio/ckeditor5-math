@@ -219,6 +219,7 @@ export class MainFormView extends View {
 	
 		fieldView.on( 'render', onInput );
 		fieldView.on( 'input', onInput );
+		fieldView.on( 'change', onInput );
 	
 		return mathInput;
 	}

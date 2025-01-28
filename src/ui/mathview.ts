@@ -44,7 +44,6 @@ export default class MathView extends View {
 
 
 		this.on( 'change', () => {
-			console.log("changed")
 			if ( this.isRendered ) {
 				this.updateMath();
 			}
