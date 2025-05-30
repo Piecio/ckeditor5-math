@@ -68,8 +68,7 @@ export class MathEditing extends Plugin {
 		const conversion = this.editor.conversion;
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const mathConfig = this.editor.config.get( 'math' )!;
-		console.log( this.editor);
-		console.log( mathConfig );
+
 
 		// View -> Model
 		conversion
